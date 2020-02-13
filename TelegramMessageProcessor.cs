@@ -44,43 +44,5 @@ namespace BKM.Dugnad
                 messages.Add(update.Message.Chat.Id.ToString());
             }
         }
-
-        // private void RequestPhoneNumber(long chatId)
-        // {
-        //     var rows = new List<KeyboardButton>(){
-        //         new KeyboardButton("Send telefonnummeret mitt"){
-        //             RequestContact = true,
-        //         }
-        //     };
-        //     var replyMarkup = new ReplyKeyboardMarkup(rows, true, true);
-        //     _telegramBot.SendTextMessageAsync(chatId, 
-        //     "Velkommen til Dugnadstrikebotten\nFor at botten skal kunne gi deg riktige opplysninger må vi ha telefonnummeret ditt.",
-        //     ParseMode.MarkdownV2, replyMarkup: replyMarkup);
-        // }
-
-        // private void SendAboutMessage(long chatId)
-        // {
-        //     var rows = new List<KeyboardButton>(){
-        //         new KeyboardButton("/strike")
-        //     };
-        //     var replyMarkup = new ReplyKeyboardMarkup(rows, true, true);
-        //     _telegramBot.SendTextMessageAsync(chatId, 
-        //     "Send /strike for å få se striken din",
-        //     ParseMode.MarkdownV2, replyMarkup: replyMarkup);
-        // }
-
-        // private void StorePhoneNumber(int userId, string phone)
-        // {
-        //     return;
-        // }
-
-        // private User GetRegisteredUser(int userId)
-        // {
-        //     // todo
-
-        //     return new User(){
-        //         PhoneNumber = "+4740451802"
-        //     };
-        // }
     }
 }
