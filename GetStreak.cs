@@ -24,7 +24,7 @@ namespace BKM.Dugnad
             outbox.Add(new UserMessage()
             {
                 ChatId = contact.RowKey,
-                Message = $"Din streak er {streak.Streak}"
+                Message = $"Din streak er {streak.Streak} 🔥"
             });
         }
     }

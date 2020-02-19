@@ -39,7 +39,7 @@ namespace BKM.Dugnad
                 }
             }
 
-            if(update.Message.Text == "/streak" || update.Message.Text == "/start")
+            if(update.Message.Text.ToLower() == "/streak" || update.Message.Text.ToLower() == "/start")
             {
                 messages.Add(update.Message.Chat.Id.ToString());
             }
