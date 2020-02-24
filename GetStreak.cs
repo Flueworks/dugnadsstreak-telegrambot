@@ -16,7 +16,7 @@ namespace BKM.Dugnad
                 outbox.Add(new UserMessage()
                 {
                     ChatId = contact.RowKey,
-                    Message = "Fant ingen streak. Kontakt Christoffer Tombre for feilsøking."
+                    Message = "Fant ingen streak på ditt telefonnummer. Kontakt Christoffer Tombre for feilsøking."
                 });
                 return;
             }

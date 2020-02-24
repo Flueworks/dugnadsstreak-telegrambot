@@ -10,12 +10,15 @@ namespace BKM.Dugnad
         [FunctionName("StorePhoneNumber")]
         [return: Table("PhoneNumbers")]
         public static Contact Run([QueueTrigger("contacts", Connection = "AzureWebJobsStorage")]Contact contact, 
-            [Queue("messages", Connection = "AzureWebJobsStorage")]ICollector<string> messages,
+            [Queue("messages", Connection = "AzureWebJobsStorage")]ICollector<Message> messages,
             ILogger log)
         {
             log.LogInformation($"C# Queue trigger function processed: {contact.RowKey} {contact.PhoneNumber}");
             contact.PartitionKey = "Telegram";
-            messages.Add(contact.RowKey);
+            messages.Add(new Message(){
+                ChatId = contact.RowKey,
+                SentContact = true,
+            });
 
             return contact;
         }

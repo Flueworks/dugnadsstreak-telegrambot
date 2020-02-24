@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-// 1001583926:AAGmhMtVdEPFCnES9FRsN6xB_GClkwt7LbI
-
 namespace BKM.Dugnad
 {
     public static class TelegramMessageReceived

@@ -11,19 +11,19 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace BKM.Dugnad
 {
-    public static class TelegramMessageProcessor
+    public static class MessageParser
     {
-        [FunctionName("TelegramMessageProcessor")]
+        [FunctionName("MessageParser")]
         public static void Run([QueueTrigger("incoming", Connection = "AzureWebJobsStorage")]string json,
             [Queue("contacts", Connection = "AzureWebJobsStorage")]ICollector<Contact> contacts,
-            [Queue("messages", Connection = "AzureWebJobsStorage")]ICollector<string> messages,
+            [Queue("messages", Connection = "AzureWebJobsStorage")]ICollector<Message> messages,
             ILogger log)
         {
             var update = JsonConvert.DeserializeObject<Update>(json);
             log.LogInformation($"C# Queue trigger function processed: {update.Type}");
 
             if(update.Type != UpdateType.Message || update.Message == null){
-                return; // only handle message types
+                return; // only handle message updates
             }
 
             // get user
@@ -38,10 +38,20 @@ namespace BKM.Dugnad
                     return;
                 }
             }
-
-            if(update.Message.Text.ToLower() == "/streak" || update.Message.Text.ToLower() == "/start")
+            
+            var text = update.Message.Text.ToLower();
+            if(text == "/streak" || text == "/start" || text == "/hjelp")
             {
-                messages.Add(update.Message.Chat.Id.ToString());
+                messages.Add(new Message(){
+                    ChatId = update.Message.Chat.Id.ToString(),
+                    Text = text
+                });
+                return;
+            }
+
+            else
+            {
+                // send about message?
             }
         }
     }
