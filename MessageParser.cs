@@ -31,8 +31,10 @@ namespace BKM.Dugnad
             {
                 if(update.Message.Contact.UserId == update.Message.Chat.Id)
                 {
+                    var phonenumber = update.Message.Contact.PhoneNumber;
+                    phonenumber = phonenumber.Replace("+", "");
                     contacts.Add(new Contact{
-                        PhoneNumber = update.Message.Contact.PhoneNumber,
+                        PhoneNumber = phonenumber,
                         RowKey = update.Message.Chat.Id.ToString()
                     });
                     return;

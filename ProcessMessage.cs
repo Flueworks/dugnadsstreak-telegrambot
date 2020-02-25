@@ -16,23 +16,23 @@ namespace BKM.Dugnad
             log.LogInformation($"C# Queue trigger function processed: {message.ChatId} {message.Text}");
             log.LogInformation($"Got phone number {contact?.PhoneNumber}");
 
-            if(message.Text == "/start" && contact == null){
-                // send welcome message
+            // if(message.Text == "/start" && contact == null){
+            //     // send welcome message
 
-                outbox.Add(new UserMessage(){
-                    ChatId = message.ChatId,
-                    Message = "Velkommen til Aksjonsstreak botten. Send /streak for å vise din streak.",
-                });
-            }
+            //     outbox.Add(new UserMessage(){
+            //         ChatId = message.ChatId,
+            //         Message = "Velkommen til Aksjonsstreak botten. Send /streak for å vise din streak.",
+            //     });
+            // }
 
             if(contact == null)
             {
                 outbox.Add(new UserMessage{
                     ChatId = message.ChatId,
-                    Message = "Vi trenger telefonnummeret ditt for kunne sende deg din dugnadsstreak",
-                    Keyboard = new ReplyKeyboardMarkup(new []{new KeyboardButton("Send telefonnummeret mitt"){
+                    Message = "Velkommen til Aksjonsstreak botten. Vi trenger telefonnummeret ditt for kunne sende deg din dugnadsstreak",
+                    Keyboard = new ReplyKeyboardMarkup(new []{new KeyboardButton("Trykk her for å sende telefonnummeret mitt"){
                         RequestContact = true,
-                    }}, true, true)
+                    }}, false, true)
                 });
                 return;
             }

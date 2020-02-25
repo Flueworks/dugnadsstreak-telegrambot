@@ -16,15 +16,16 @@ namespace BKM.Dugnad
                 outbox.Add(new UserMessage()
                 {
                     ChatId = contact.RowKey,
-                    Message = "Fant ingen streak på ditt telefonnummer. Kontakt Christoffer Tombre for feilsøking."
+                    Message = "Fant ingen streak på ditt telefonnummer. Kontakt Christoffer Tombre for mer informasjon"
                 });
                 return;
             }
 
+            var showFire = streak.Streak != "0" ? "🔥" : "";
             outbox.Add(new UserMessage()
             {
                 ChatId = contact.RowKey,
-                Message = $"Din streak er {streak.Streak} 🔥"
+                Message = $"Din streak er {streak.Streak} {showFire}"
             });
         }
     }
