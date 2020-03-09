@@ -15,6 +15,8 @@ namespace BKM.Dugnad
         public string RowKey { get; set; }
 
         public string Streak { get; set; }
+        public bool ShowFire { get; set;}
+        public bool ShowHourGlass { get; set; }
     }
 
     public class Contact

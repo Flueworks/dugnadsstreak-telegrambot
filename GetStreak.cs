@@ -21,11 +21,11 @@ namespace BKM.Dugnad
                 return;
             }
 
-            var showFire = streak.Streak != "0" ? "🔥" : "";
+            var symbol = streak.ShowFire ? "🔥" : streak.ShowHourGlass ? "⌛" :"";
             outbox.Add(new UserMessage()
             {
                 ChatId = contact.RowKey,
-                Message = $"Din streak er {streak.Streak} {showFire}"
+                Message = $"Din streak er {streak.Streak} {symbol}"
             });
         }
     }
